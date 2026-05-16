@@ -1,8 +1,9 @@
 <p align="center">
-  <img src="santana.png" alt="Santana" width="100">
+     <img src="santana.png" alt="Santana" width="11%">
+     <img src="sant.png" alt="Santana Title" width="70%">
 </p>
 
-<p align="center">santana is a realtime terminal data plotter for logs and numeric streams.</p>
+`santana` is a realtime terminal data plotter for logs and numeric streams.
 
 <div align="center">
       <img src="examples/demo.gif" alt="Demo" width="49%">
@@ -16,9 +17,18 @@
     <a href="#"><img src="https://img.shields.io/github/repo-size/deepsoftworks/santana"></a>
 </p>
 
-## What It Does
+### Build
 
-Pipe output like `python main.py | santana` and Santana will auto-detect fields and plot them live in the terminal.
+Requires Rust 1.75+.
+
+```bash
+cargo build --release
+```
+
+### What It Does
+
+Pipe output like `python main.py | santana` and Santana will auto parse numeric streams
+and plot them live in the terminal.
 
 It understands:
 
@@ -32,19 +42,7 @@ It understands:
 [LOG] a=3, y=4 b:5; r 4
 ```
 
-That line becomes four streams: `a`, `y`, `b`, and `r`.
-
-## Build
-
-Requires Rust 1.75+.
-
-```bash
-cargo build --release
-```
-
-The binary lands at `target/release/santana`.
-
-## Usage
+### Usage
 
 ```bash
 ./target/release/santana [options]
@@ -107,10 +105,3 @@ kubectl top pods --no-headers | santana --filter "cpu|memory"
 | `?` | Help overlay |
 | `Ctrl+L` | Force redraw |
 
-## Chart Modes
-
-| Mode | Description |
-|------|-------------|
-| `line` | Braille-based line chart per stream |
-| `bar` | Grouped vertical bars |
-| `split` | Each stream in its own pane, auto-scaled independently |
